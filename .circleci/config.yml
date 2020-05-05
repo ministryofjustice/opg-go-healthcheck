@@ -1,0 +1,23 @@
+version: 2.1
+
+workflows:
+  pr-build-and-test:
+    jobs:
+      - test_healthcheck:
+          name: test_healthcheck
+
+jobs:
+  test_healthcheck:
+    docker:
+      - image: circleci/golang
+    steps:
+      - checkout
+      - run:
+          name: Install Go Modules Dependencies
+          command: go mod download
+      - run: mkdir -p /tmp/test-results
+      - run:
+          name: Run Unit and Intergration Tests
+          command: gotestsum --junitfile unit-tests.xml
+      - store_test_results:
+          path: /tmp/test-results
