@@ -1,4 +1,4 @@
-package gohealthcheck
+package healthcheck
 
 import (
 	"flag"

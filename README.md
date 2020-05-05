@@ -18,11 +18,11 @@ Register a health-check address at the top of your main() function
 package main
 
 import (
-    "github.com/ministryofjustice/opg-go-healthcheck"
+    "github.com/ministryofjustice/opg-go-healthcheck/healthcheck"
 )
 
 func main() {
-    gohealthcheck.Register("http://localhost:8000/health-check")
+    healthcheck.Register("http://localhost:8000/health-check")
 
     // ...
 }
